@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>FNL Findings Documentary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+/* Layout: one reading column, frames break wider; FNL dark-teal palette */
+:root{
+  --bg:#FBFCFC; --fg:#0E1A1C; --muted:#4f5a5d; --line:#E3EEF0;
+  --accent:#056C7B; --bright:#00a8b0; --tint:#E6F9FA; --warm:#F7F3E6;
+  --hero:#0A1113; --hero2:#152227; --herofg:#F2F7F8;
+  --f-display:'Figtree','Helvetica Neue',Arial,sans-serif;
+  --f-body:'Figtree','Helvetica Neue',Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d1517; --fg:#E8F0F1; --muted:#9fb0b3; --line:#22343a;
+  --accent:#3fc6cf; --bright:#00C2CB; --tint:#12292e; --warm:#221f17;
+  --hero:#071012; --hero2:#10201f; --herofg:#F2F7F8; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d1517; --fg:#E8F0F1; --muted:#9fb0b3; --line:#22343a;
+  --accent:#3fc6cf; --bright:#00C2CB; --tint:#12292e; --warm:#221f17;
+  --hero:#071012; --hero2:#10201f; --herofg:#F2F7F8; color-scheme:dark}
+
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:18px;line-height:1.65}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.read{max-width:44rem}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;letter-spacing:-.02em;line-height:1.1}
+h2{font-size:clamp(28px,4vw,40px);font-weight:900}
+h3{font-size:21px;font-weight:800;letter-spacing:-.01em}
+p{margin:0}
+img{max-width:100%;height:auto}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible{outline:3px solid var(--bright);outline-offset:3px;border-radius:4px}
+.eyebrow{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+header.hero{background:radial-gradient(ellipse at 20% 0%,#17323a 0%,var(--hero2) 40%,var(--hero) 100%);color:var(--herofg)}
+header.hero .wrap{padding-block:56px 64px;display:grid;gap:40px}
+.hero .eyebrow{color:#00C2CB}
+.hero h1{font-size:clamp(38px,6.4vw,72px);font-weight:900;letter-spacing:-.035em;max-width:16ch}
+.hero h1 span{color:#00C2CB}
+.hero .lede{font-size:20px;color:rgba(242,247,248,.8);max-width:40rem}
+.hero figure{margin:0}
+.hero img{border-radius:16px;display:block;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.hero figcaption{font-size:14px;color:rgba(242,247,248,.6);margin-top:12px}
+.byline{font-size:14px;color:rgba(242,247,248,.6)}
+
+section{padding-block:72px}
+section + section{border-top:1px solid var(--line)}
+.stack{display:flex;flex-direction:column;gap:20px}
+
+.sample{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:40px;align-items:start}
+.sample a.thumb{display:block;border-radius:14px;overflow:hidden;position:relative}
+.sample a.thumb img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 40%}
+.sample a.thumb::after{content:"Watch on YouTube";position:absolute;left:12px;bottom:12px;background:rgba(10,17,19,.85);color:#fff;font-size:13px;font-weight:700;padding:6px 10px;border-radius:8px}
+ol.moves{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:16px;counter-reset:m}
+ol.moves li{counter-increment:m;display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px}
+ol.moves li::before{content:counter(m);font-weight:900;font-size:22px;color:var(--accent);line-height:1.3}
+
+.frames{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 32px;margin-top:40px}
+.frames figure{margin:0;display:flex;flex-direction:column;gap:12px}
+.frames img{border-radius:12px;display:block;width:100%;border:1px solid var(--line)}
+.frames figcaption{display:flex;flex-direction:column;gap:4px}
+.frames figcaption b{font-size:18px;font-weight:800}
+.frames figcaption span{font-size:16px;color:var(--muted);line-height:1.55}
+.frames .vert{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:32px;align-items:center}
+.note{font-size:15px;color:var(--muted);background:var(--warm);padding:14px 18px;border-radius:10px;margin-top:24px;max-width:44rem}
+
+.runshow{margin-top:32px;overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:16px}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:800}
+td:first-child{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap;color:var(--accent)}
+tr.loop td{background:var(--tint)}
+
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin-top:32px}
+.ref{display:grid;grid-template-columns:160px minmax(0,1fr);gap:16px;align-items:start}
+.ref img{border-radius:8px;width:160px;aspect-ratio:16/9;object-fit:cover;display:block}
+.ref h3{font-size:17px}
+.ref p{font-size:15px;color:var(--muted);line-height:1.55;margin-top:4px}
+.ref .src{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+.asks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 40px;margin-top:32px}
+.asks div{display:flex;flex-direction:column;gap:6px}
+.asks p{color:var(--muted);font-size:16px}
+footer{padding-block:40px 64px;font-size:14px;color:var(--muted)}
+
+@media (max-width:760px){
+  .sample,.frames,.refs,.asks{grid-template-columns:minmax(0,1fr)}
+  .frames .vert{grid-template-columns:minmax(0,1fr)}
+  .frames .vert img{max-width:300px}
+  .ref{grid-template-columns:120px minmax(0,1fr)}
+  .ref img{width:120px}
+  section{padding-block:56px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="stack">
+      <div class="eyebrow">Video concept &middot; The Frank and Lizzie Show</div>
+      <h1>50 interviews. One story about <span>what we found.</span></h1>
+      <p class="lede">Frank and Lizzie talk through the findings like a podcast, and we cut to the people they interviewed saying it in their own words. It plays like a short documentary, built from recordings you already have.</p>
+      <p class="byline">Proposal prepared by AI Powered Dahlia &middot; October 2026</p>
+    </div>
+    <figure>
+      <img src="img/frame2.jpg" alt="Mockup: a host on camera beside the headline Finding 02, Most learned wound care on the job, not in school" width="1600" height="900">
+      <figcaption>Mockup of the main shot: hosts discuss each finding, then hand off to the clips. Host footage is from a recent episode; findings text is a placeholder.</figcaption>
+    </figure>
+  </div>
+</header>
+
+<main>
+<section>
+  <div class="wrap sample">
+    <div class="stack">
+      <a class="thumb" href="https://www.youtube.com/shorts/8NjKF0rGM7k" target="_blank" rel="noopener"><img src="img/ref-8NjKF0rGM7k.jpg" alt="Vox video thumbnail: Can this surgery bring back memories lost to Alzheimer's?" width="480" height="360"></a>
+      <p style="font-size:14px;color:var(--muted)">Vox, &ldquo;Can this surgery bring back memories lost to Alzheimer&rsquo;s?&rdquo; 248K views on TikTok in its first week.</p>
+    </div>
+    <div class="stack read">
+      <div class="eyebrow">The sample</div>
+      <h2>Why this Vox video works</h2>
+      <p>It is mostly raw phone footage and one host talking. No studio, no B-roll shoot. Three moves carry it:</p>
+      <ol class="moves">
+        <li><span><b>Open on the real people.</b> The first seconds are the phone clips themselves, so you meet the subject before the host says a word.</span></li>
+        <li><span><b>The host explains why it matters.</b> Short, direct, to camera. Then back to a clip to prove the point.</span></li>
+        <li><span><b>Captions do the heavy lifting.</b> Big burned-in words make it work with the sound off.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stack read">
+      <div class="eyebrow">How it would look</div>
+      <h2>A few shots, repeated through the video</h2>
+      <p>Every finding is built from the same handful of shots, so editing stays fast and the video still feels varied. Interview clips are shown as placeholders; the real ones go in once Frank and Lizzie pick them.</p>
+    </div>
+    <div class="frames">
+      <figure>
+        <img src="img/frame1.jpg" alt="Mockup: vertical phone interview clip centered on a blurred background with a large caption and a name tag" loading="lazy" width="1600" height="900">
+        <figcaption><b>Cold open</b><span>The strongest line from any interview, straight from the phone recording. Name tag shows role and setting, never patient details.</span></figcaption>
+      </figure>
+      <figure>
+        <img src="img/frame3.jpg" alt="Mockup: large number card reading 31 of 50 nurses said they had no one to call" loading="lazy" width="1600" height="900">
+        <figcaption><b>Finding card</b><span>One number, one sentence. It opens each chapter and doubles as a social post.</span></figcaption>
+      </figure>
+      <figure>
+        <img src="img/frame4.jpg" alt="Mockup: four interview clips side by side under one question" loading="lazy" width="1600" height="900">
+        <figcaption><b>Supercut</b><span>The same question, many answers, cut quickly. This is where 50 interviews feel like 50 voices.</span></figcaption>
+      </figure>
+      <figure>
+        <img src="img/frame5.jpg" alt="Mockup: interview clip full screen with the host in a small box in the corner" loading="lazy" width="1600" height="900">
+        <figcaption><b>Clip with host reaction</b><span>The interview plays full screen while a host reacts in the corner, the way a podcast feels on video.</span></figcaption>
+      </figure>
+      <figure class="vert">
+        <img src="img/frame6.jpg" alt="Mockup: vertical short with host on top, interview clip below, and caption We interviewed 50 nurses" loading="lazy" width="675" height="1200">
+        <figcaption><b>Vertical cut-downs</b><span>Each finding becomes its own 45 to 60 second short for TikTok, Reels and YouTube Shorts: host on top, interview below, one caption. Seven findings means seven shorts that all point back to the full video.</span></figcaption>
+      </figure>
+    </div>
+    <p class="note">All quotes, numbers and roles in these frames are placeholders to show the layout. The real ones come from Frank and Lizzie&rsquo;s research.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stack read">
+      <div class="eyebrow">Structure</div>
+      <h2>Run of show for the full YouTube video</h2>
+      <p>About 20 to 30 minutes, with a YouTube chapter for each finding so viewers can jump to what they care about.</p>
+    </div>
+    <div class="runshow">
+      <table>
+        <thead><tr><th>Time</th><th>Segment</th><th>What&rsquo;s on screen</th></tr></thead>
+        <tbody>
+          <tr><td>0:00</td><td>Cold open</td><td>Two or three of the most striking interview lines, back to back. No logo yet.</td></tr>
+          <tr><td>0:45</td><td>Why we did this</td><td>Frank and Lizzie: who they talked to, how many, and the question that started it. Disclaimer card.</td></tr>
+          <tr class="loop"><td>3:00</td><td>Finding 1 to 7</td><td>Each one repeats: finding card, hosts set it up, 2 to 4 interview clips, a supercut when it fits, hosts&rsquo; takeaway. About 3 minutes each.</td></tr>
+          <tr><td>24:00</td><td>What it means for you</td><td>Hosts speak to the wound care nurse watching: what to do with this.</td></tr>
+          <tr><td>27:00</td><td>Close</td><td>One last interview line, then the end card and resource link.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stack read">
+      <div class="eyebrow">More examples</div>
+      <h2>Interviews recorded on phones and video calls</h2>
+      <p>None of these needed a film crew. Each one shows a piece of the format.</p>
+    </div>
+    <div class="refs">
+      <a class="ref" href="https://www.youtube.com/watch?v=KR4ifeGxdQw" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <img src="img/ref-KR4ifeGxdQw.jpg" alt="" loading="lazy" width="480" height="360">
+        <div><div class="src">New York Times Opinion</div><h3>Inside a Covid I.C.U., Through a Nurse&rsquo;s Eyes</h3><p>A nurse&rsquo;s own phone footage carries the whole piece. Proof that self-recorded video can feel cinematic.</p></div>
+      </a>
+      <a class="ref" href="https://www.youtube.com/watch?v=3xzOTkXo7oQ" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <img src="img/ref-3xzOTkXo7oQ.jpg" alt="" loading="lazy" width="480" height="360">
+        <div><div class="src">Michigan Medicine</div><h3>We Take Care of People: Real Nurse Stories</h3><p>Many nurses, one theme, cut together. Close to how a single finding would play.</p></div>
+      </a>
+      <a class="ref" href="https://www.youtube.com/watch?v=gVbQILT0Ars" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <img src="img/ref-gVbQILT0Ars.jpg" alt="" loading="lazy" width="480" height="360">
+        <div><div class="src">University of Dundee</div><h3>7 Things I Wish I&rsquo;d Known Before I Was a Mental Health Nurse</h3><p>One question asked to many people, organized into numbered points. The supercut idea in practice.</p></div>
+      </a>
+      <a class="ref" href="https://vimeo.com/18714302" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <div style="width:100%;aspect-ratio:16/9;border-radius:8px;background:var(--tint);display:grid;place-items:center;font-weight:800;color:var(--accent);font-size:13px;letter-spacing:.1em">VIMEO</div>
+        <div><div class="src">York University research film</div><h3>Nurses Grieve Too</h3><p>A documentary built from qualitative research interviews with nurses. The closest match to a research-findings video.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stack read">
+      <div class="eyebrow">What we need</div>
+      <h2>Four things from Frank and Lizzie</h2>
+    </div>
+    <div class="asks">
+      <div><h3>1. The findings list</h3><p>5 to 7 headline findings, each with the number behind it (for example &ldquo;31 of 50&rdquo;). This becomes the chapter list.</p></div>
+      <div><h3>2. Clip picks</h3><p>For each finding, the interviews and rough timestamps you want to use. A simple spreadsheet is enough.</p></div>
+      <div><h3>3. One host conversation</h3><p>A 45 to 60 minute recorded talk-through of the findings, on Zoom with &ldquo;separate audio file for each participant&rdquo; turned on.</p></div>
+      <div><h3>4. Original files and consent</h3><p>The original phone or Zoom files (not screen recordings), plus each person&rsquo;s OK to appear publicly. No patient details on screen.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">This show is for educational purposes only and does not constitute medical advice. Mockup frames use placeholder text and figures. Reference videos belong to their creators and are linked for format only.</div>
+</footer>
+</body>
+</html>
